@@ -30,8 +30,10 @@ function create_post_type() {
 add_action( 'pre_get_posts', 'add_my_post_types_to_query' );
 
 function add_my_post_types_to_query( $query ) {
-	if ( $query->is_main_query() )
-		$query->set( 'post_type', array( 'post', 'webinar' ) );
+	if ( is_home() && $query->is_main_query() )
+			$query->set( 'post_type', array( 'post', 'webinar' ) );
+	if ( ! is_admin() && ! is_home() && $query->is_main_query() )
+			$query->set( 'post_type', array( 'post', 'webinar' ) );
 	return $query;
 }
 
