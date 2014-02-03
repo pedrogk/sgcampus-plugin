@@ -70,4 +70,6 @@ function sgcampus_save_post($id) {
     if (isset($_POST['time']))
         update_post_meta($id, 'time', $_POST['time']);
 
+}
+
 ?>
